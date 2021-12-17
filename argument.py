@@ -18,16 +18,21 @@ def gasuss_noise(image, standard_diviation):
     return out
 
 
-# load test data
-(test_image_orig, test_label_orig) = prepare_data()[1]
+def argument_test_data():
 
-# rotation
-test_image_rot = RandomRotation(1/8)(test_image_orig)
-test_label_rot = test_label_orig
+    # load test data
+    (test_image_orig, test_label_orig) = prepare_data()[1]
 
-# add gaussian noise
-test_image_noise = gasuss_noise(test_image_orig, 3)
-test_label_noise = test_label_orig
+    # rotation
+    test_image_rot = RandomRotation(1/8)(test_image_orig)
+    test_label_rot = test_label_orig
+
+    # add gaussian noise
+    test_image_noise = gasuss_noise(test_image_orig, 3)
+    test_label_noise = test_label_orig
+
+    return (test_image_rot, test_label_rot), (test_image_noise, test_label_noise)
+
 
 # for i in range(5):
 #     plt.subplot(5, 1, i+1)
